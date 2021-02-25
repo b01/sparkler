@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  # Note the silly hax using variables from the `.env` to set values in one
+  # place for ARG and ENV. If your host machine where you Docker has an
+  # environment variable that matches, that value will be used.
+  dev:
+    build:
+      args: # check the `.env` file for these values or your environment.
+        USER_NAME: '${USER_NAME}'
+        USER_UID: '${USER_UID}'
+        USER_GID: '${USER_GID}'
+        REPO: '${REPO}'
+        USER_GROUP: '${USER_GROUP}'
+        NODE_JS_VERSION: '${NODE_JS_VERSION}'
+        NODE_JS_DISTRO: '${NODE_JS_DISTRO}'
+      context: '..'
+      dockerfile: '.docker/Dockerfile'
+    env_file: '../.env' # pass the env variables onto the container.
+    image: '${COMPOSE_PROJECT_NAME}:latest'
+    volumes:
+      - '..:/home/${USER_NAME}/src/${REPO}'
+      - 'vscode:/home/${USER_NAME}/.vscode-server'
+      - 'vscodei:/home/${USER_NAME}/.vscode-server-insiders'
+volumes:
+  vscode: null
+  vscodei: null
