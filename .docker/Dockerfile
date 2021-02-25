@@ -54,7 +54,8 @@ USER $USER_NAME
 
 # VSCode Requirements for pre-installing extensions
 RUN mkdir -p /home/$USER_NAME/.vscode-server \
-    /home/$USER_NAME/.vscode-server-insiders
+    /home/$USER_NAME/.vscode-server-insiders \
+    ~/src/${REPO}
 
 WORKDIR $WORK_DIR
 
