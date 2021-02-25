@@ -1,9 +1,8 @@
 # Directories
 # -----------
+/dist/css/
+/dist/js/
 node_modules/
 
 # Files
 # -----
-/dist/bundle.css
-/dist/main.js
-/dist/main.js.LICENSE.txt

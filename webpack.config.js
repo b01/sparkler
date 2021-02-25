@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
+  mode: "production",
   module: {
     rules: [
       {
@@ -12,9 +13,12 @@ module.exports = {
       },
     ],
   },
+  output: {
+    filename: 'js/[name].js'
+  },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'bundle.css'
+      filename: 'css/bundle.css'
     }),
   ],
 };
