@@ -1,3 +1,6 @@
+// import fonts.
+import './main.scss';
+
 // import the Spark JavaScript
 import spark from "@sparkdesignsystem/spark/es5/spark";
 import sparkPrerender from "@sparkdesignsystem/spark/es5/sparkPrerender";
