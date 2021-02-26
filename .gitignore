@@ -2,8 +2,9 @@
 # -----------
 /dist/css/
 /dist/js/
-node_modules/
+/node_modules/
 /src/partials/
+
 # Files
 # -----
-dist/sparkIcons.svg
+/dist/spark-icons.svg

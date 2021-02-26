@@ -16,6 +16,7 @@ services:
         NODE_JS_DISTRO: '${NODE_JS_DISTRO}'
       context: '..'
       dockerfile: '.docker/Dockerfile'
+      target: 'dev'
     env_file: '../.env' # pass the env variables onto the container.
     image: '${COMPOSE_PROJECT_NAME}:latest'
     volumes:

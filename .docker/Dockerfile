@@ -1,4 +1,4 @@
-FROM alpine:3.13
+FROM alpine:3.13 AS dev
 
 # If you're on Linux, you can change these to make sure your user has read-write access.
 ARG USER_NAME
@@ -62,3 +62,30 @@ WORKDIR $WORK_DIR
 ENTRYPOINT [ "tini", "--" ]
 
 CMD [ "node", "-r", "./logs", "./log" ]
+
+###
+# Target: release
+# Use this by running: docker run --rm -v "${PWD}:/app/out" khalifahks/sparkler build
+###
+
+FROM dev AS release
+
+USER root
+
+WORKDIR /app
+
+COPY ./ ./
+
+RUN rm -rf ./dist/css \
+    ./dist/js \
+    ./dist/spark-icons.svg \
+    .devcontainer \
+    .docker \
+    .dockerignore \
+    .env \
+    .git \
+    .gitignore \
+    log.s \
+    logs.js \
+ && npm install \
+ && cp ./build.sh /usr/local/bin/build
