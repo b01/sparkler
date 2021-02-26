@@ -5,12 +5,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const loadIcons = (cb) => {
   const fileStream = fs.createWriteStream(
-    './dist/sparkIcons.svg',
+    './dist/spark-icons.svg',
   );
   request
     .get({
-      uri:
-        'https://www.rockomni.com/mcds/assets/GlobalContent/NonStockImages/Icons/spark-icons-v14.svg',
+      uri: 'https://www.rockomni.com/mcds/assets/GlobalContent/NonStockImages/Icons/spark-icons-v14.svg',
       rejectUnauthorized: false,
     })
     .pipe(fileStream)
@@ -46,4 +45,7 @@ module.exports = {
       filename: 'css/bundle.css',
     }),
   ],
+  resolve: {
+    extensions: ['.js', '.scss'],
+  },
 };
